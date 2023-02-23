@@ -98,7 +98,7 @@ class BkashPaymentState extends State<BkashPayment> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(child: Scaffold(
       // appBar: AppBar(title: const Text('bKash Checkout')),
       appBar: AppBar(
           elevation: 0.0,
@@ -115,7 +115,7 @@ class BkashPaymentState extends State<BkashPayment> {
           InAppWebView(
             // access the html file on local
             initialFile:
-                "packages/flutter_bkash/assets/www/checkout_bkash.html",
+            "packages/flutter_bkash/assets/www/checkout_bkash.html",
             initialOptions: InAppWebViewGroupOptions(
               crossPlatform: InAppWebViewOptions(
                 useShouldOverrideUrlLoading: true,
@@ -192,6 +192,6 @@ class BkashPaymentState extends State<BkashPayment> {
               : Container(),
         ],
       ),
-    );
+    ), onWillPop: () async => false);
   }
 }
