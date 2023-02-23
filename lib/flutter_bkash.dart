@@ -107,7 +107,7 @@ class BkashPaymentState extends State<BkashPayment> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             color: Colors.white,
-            onPressed: () => _paymentHandler('paymentFailed', '');,
+            onPressed: () => _paymentHandler('paymentFailed', ''),
           ),
           title: const Text('bKash Checkout')),
       body: Stack(
