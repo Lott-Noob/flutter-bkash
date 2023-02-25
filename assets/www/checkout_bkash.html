@@ -82,7 +82,6 @@
                                     url: paymentConfig.createCheckoutURL+'?amount='+paymentRequest.amount,
                                     type: "GET",
                                     contentType: "application/json",
-                                    data: JSON.stringify(request),
                                     success: function (data) {
                                         console.log("success createRequest => " + JSON.stringify(data));
                                         console.log("response type => " + (typeof data));
