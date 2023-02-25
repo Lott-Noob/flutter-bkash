@@ -78,17 +78,10 @@
                             paymentRequest: paymentRequest,
                             createRequest: function (request) {
                                 console.log("createRequest (request) => " + JSON.stringify(request));
-
                                 $.ajax({
-                                    url: paymentConfig.createCheckoutURL,
-                                    type: "POST",
+                                    url: paymentConfig.createCheckoutURL+'?amount='+paymentRequest.amount,
+                                    type: "GET",
                                     contentType: "application/json",
-                                    beforeSend: function (xhr) {
-                                        xhr.setRequestHeader(
-                                            "Authorization",
-                                            "Bearer " + accessToken
-                                        );
-                                    },
                                     data: JSON.stringify(request),
                                     success: function (data) {
                                         console.log("success createRequest => " + JSON.stringify(data));
@@ -127,13 +120,9 @@
                                 console.log("executeRequestOnAuthorization => ");
 
                                 $.ajax({
-                                    url: paymentConfig.executeCheckoutURL,
-                                    type: "POST",
+                                    url: paymentConfig.executeCheckoutURL+'?paymentID='+paymentID,
+                                    type: "GET",
                                     contentType: "application/json",
-                                    data: JSON.stringify({
-                                        paymentID: paymentID,
-                                        order_no: orderNo,
-                                    }),
                                     success: function (data) {
                                         if(isJsonString(data)){
                                             data = JSON.parse(data);
